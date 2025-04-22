@@ -4,6 +4,7 @@ from torch import nn
 import torch.nn.functional as F
 from dataloader import get_train_loader, get_val_loader
 from model import UNet
+from utils import pixel_accuracy
 
 # Set seeds for reproducibility
 torch.manual_seed(43)
