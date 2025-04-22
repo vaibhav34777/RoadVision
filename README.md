@@ -64,7 +64,36 @@ Results:
 
 - Pixel accuracy ↑ to 85 %
 
-​
+## Inference
+1. Preprocess: resize & normalize input image
 
+2. Segmentation → mask = unet(img_tensor).argmax(dim=0)
 
-   
+3. Color map → colored_mask = apply_colormap(mask)
+
+4. Detection → detections = yolo(img)
+
+5. Overlay → output = draw_boxes(colored_mask, detections)
+
+## Demo Video
+Watch a quick demo of RoadVision in action across the whole validation set:
+[Demo Video](https://drive.google.com/file/d/1sQh1VaNRaLaKlDfIu0NxfodgiU2xoI9h/view?usp=drive_link)
+
+## Kaggle Notebook
+Explore the training pipeline, data preprocessing, and metric analysis in my interactive Kaggle notebook:
+[kaggle Notebook](https://www.kaggle.com/code/vaibhav1908/roadvision)
+
+## Deployment on Hugging Face Spaces
+1. Push your repository to a new HF Space (choose “Streamlit”).
+
+2. Ensure app.py, requirements.txt, and models/ are present.
+
+3. Hugging Face will auto‑deploy your app.
+   [HuggingFace Space](https://huggingface.co/spaces/imvaibhavrana/RoadVision)
+
+## Acknowledgement
+**Hugging Face Spaces** for providing a free and easy-to-use hosting platform for Streamlit applications, enabling seamless deployment and sharing of RoadVision.  
+- **YOLOv8** (You Only Look Once) for the pretrained object detection model weights and codebase, which form the backbone of our detection pipeline.  
+
+## License
+This project is MIT‑licensed. If you use RoadVision in your research or applications, please cite.
