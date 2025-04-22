@@ -27,6 +27,12 @@ custom_colormap = {(64, 128, 64): 0,(192, 0, 128): 1,(0, 128, 192): 2,(0, 128, 6
  (64, 0, 64): 28, (192, 192, 0): 29,(106, 90, 205): 30,(64, 128, 128): 31}
 
 
+# Calculating pixel accuracy
+def pixel_accuracy(preds, labels):
+    correct = (preds == labels).sum().item()
+    total = preds.numel()
+    return correct, total
+    
 # Convert label mask to RGB using the custom colormap
 def label_to_rgb(label_mask, custom_colormap=custom_colormap):
     h, w = label_mask.shape
