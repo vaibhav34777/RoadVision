@@ -1,6 +1,6 @@
 # RoadVision 
 <p align="center">
-  <img src="outputs/final_output.png" width="500" alt="Demonstration" />
+  <img src="outputs/final_output.png" width="600" alt="Demonstration" />
 </p>
 
 **Semantic Segmentation + Object Detection for Intelligent Road Scene Understanding**
