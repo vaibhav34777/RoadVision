@@ -8,7 +8,7 @@ RoadVision is a deep learning web application that fuses **semantic segmentation
 ##  Features
 
 - 🔍 **Object Detection**: YOLOv8 pretrained on COCO  
-- 🌈 **Semantic Segmentation**: Custom U‑Net (32 classes)  
+- 🌈 **Semantic Segmentation**: Custom U‑Net 
 - 🎯 **Combined Loss**: Focal Loss + Dice Loss for robust class learning  
 - ⚙️ **Training Regimen**: Adam optimizer + StepLR scheduler, 30 epochs  
 - 📈 **Metrics**:  
@@ -31,9 +31,40 @@ RoadVision is a deep learning web application that fuses **semantic segmentation
    ```bash
    git clone https://github.com/vaibhav34777/RoadVision.git
    cd roadvision
-2. ** Install Dependencies **
+2. **Install Dependencies**
    ```bash
    pip install -r requirements.txt
-3. ** Load the model **
+3. **Load the model**
    load weights in the unet model from outputs/README.md and load the pretrained YOLO model from ultralytics.
+4. **Streamlit app**
+   ```bash
+   streamlit run app.py
+
+## UNet Architecture
+I implement a standard encoder–decoder U‑Net with skip connections , there is total of 5 blocks in both encoder and decoder, and each block has 2 convolution layers and i have used a 2x2 max pooling after each block in encoder and used transpose convolution for uplifting the spatial dimensions of the activations in the decoder .
+The model has approximately 7.5 million parameters , I have used 32 output classes so the output segmentation mask has values from 0 -31 but i have reduced the number of active classes by merging classes and ignoring some classes for better performance with a smaller dataset.
+
+## Loss Function
+To handle class imbalance and encourage precise boundaries, i use a combination of Focal Loss and Dice Loss for optimization.
+I have used 0.4*Focal loss + 0.6*Dice Loss for focusing on both the focal and dice loss.
+This forces the network to focus on hard pixels and maximizes overlap with the ground truth.
+
+## Training
+- Optimizer: Adam (lr=1e‑3)
+
+- Scheduler: StepLR(step_size=10, gamma=0.1)
+
+- Epochs: 30
+
+Results:
+
+- Training loss ↓ to 1.2
+
+- Validation loss ↓ to 2.1
+
+- Pixel accuracy ↑ to 85 %
+
+​
+
+
    
