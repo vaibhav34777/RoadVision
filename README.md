@@ -1,16 +1,39 @@
-# RoadVision 
+# RoadVision 🚗🛣️  
 **Semantic Segmentation + Object Detection for Intelligent Road Scene Understanding**
 
-RoadVision is a deep learning-based web application that combines **semantic segmentation** and **object detection** to analyze road scenes from static images. Designed with real-world applications like autonomous driving and smart traffic systems in mind, this project leverages a U-Net-based segmentation model and a YOLO-based object detector to produce detailed and interpretable visual outputs.
-
----
-## Features
-
-- 🔍 **Object Detection** using YOLO (You Only Look Once)
-- 🌈 **Semantic Segmentation** using a lightweight U-Net model 
-- 🧠 **Multi-task inference** combining both tasks on a single image
-- 📷 **Image input** via file upload or camera
-- 🧰 **Streamlit web interface** for easy usage and interactive exploration
+RoadVision is a deep learning web application that fuses **semantic segmentation** (U‑Net) with **object detection** (YOLO) to analyze road scenes. It outputs an RGB segmentation mask with color‑coded classes and overlays YOLO bounding boxes—ideal for autonomous driving demos, smart‑city prototypes, and research.
 
 ---
 
+##  Features
+
+- 🔍 **Object Detection**: YOLOv8 pretrained on COCO  
+- 🌈 **Semantic Segmentation**: Custom U‑Net (32 classes)  
+- 🎯 **Combined Loss**: Focal Loss + Dice Loss for robust class learning  
+- ⚙️ **Training Regimen**: Adam optimizer + StepLR scheduler, 30 epochs  
+- 📈 **Metrics**:  
+  - Final training loss: **1.2**  
+  - Final validation loss: **2.1**  
+  - Pixel accuracy: **85 %**  
+- 🖼️ **Inference Pipeline**:  
+  1. Pass input through U‑Net → segmentation mask  
+  2. Pass input through YOLO → bounding boxes  
+  3. Color‑code each mask class (e.g., road=green, sidewalk=red, building=yellow, car=blue)  
+  4. Overlay YOLO boxes on the colored mask  
+- 📱 **Streamlit UI**: File upload or webcam input  
+- ☁️ **Deployable** on Hugging Face Spaces (CPU only)
+
+---
+
+## Installation
+
+1. **Clone the repository**
+   ```bash
+   git clone https://github.com/vaibhav34777/RoadVision.git
+   cd roadvision
+2. ** Install Dependencies **
+   ```bash
+   pip install -r requirements.txt
+3. ** Load the model **
+   load weights in the unet model from outputs/README.md and load the pretrained YOLO model from ultralytics.
+   
