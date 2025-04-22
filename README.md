@@ -1,7 +1,8 @@
 # RoadVision 
 <p align="center">
-  <img src="outputs/final_output.png" width="300" alt="Demonstration" />
+  <img src="outputs/final_output.png" width="500" alt="Demonstration" />
 </p>
+
 **Semantic Segmentation + Object Detection for Intelligent Road Scene Understanding**
 
 RoadVision is a deep learning web application that fuses **semantic segmentation** (U‑Net) with **object detection** (YOLO) to analyze road scenes. It outputs an RGB segmentation mask with color‑coded classes and overlays YOLO bounding boxes—ideal for autonomous driving demos, smart‑city prototypes, and research.
